@@ -1,6 +1,6 @@
 function balancedTree(ary, h){
     let nodes_cnt = (Math.pow(ary, h + 1) - 1) / (ary - 1)
-    console.log(nodes_cnt)
+    // console.log(nodes_cnt)
     let q = []
     let edge_list = []
     for(let i = 0; i < nodes_cnt; i++){q.push(0)}
