@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSS only -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link href = "style.css", rel = "stylesheet">
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  <script src="p5.js"></script>
+  <title>Unreal thing</title>
+</head>
+ 
+<body>
+    <div class = "container-custom">
+        <nav class = "navbar"> 
+
+            <button class = "btn btn-dark additionalyBtn">Menu</button>
+            <button class = "btn startBtn">Start drawing</button>
+            <div class="dropdown" style = "margin-right: 10%;">
+              <button class="btn btn-dark dropdown-toggle scenesBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Scenes
+              </button>
+              <div class="dropdown-menu scenes" aria-labelledby="dropdownMenuButton">
+                <div style = "display: flex;">
+                  <button class = "dropdown-item">Save current</button>
+                </div>
+                <div class = "dropdown-divider"></div>
+                <div style = "display: flex;">
+                  <a class="dropdown-item" href="#Layout1">Layout1</a>
+                  <button class = "btn layout-btn"><i class = "material-icons">clear</i></button>
+                </div>
+                <div style = "display: flex;">
+                  <a class="dropdown-item" href="#Layout2">Layout2</a>
+                  <button class = "btn layout-btn"><i class = "material-icons">clear</i></button>
+                </div>
+                <div style = "display: flex;">
+                  <a class="dropdown-item" href="#Layout3">Layout3</a>
+                  <button class = "btn layout-btn"><i class = "material-icons">clear</i></button>
+                </div>
+              </div>
+            </div>
+        </nav>
+        <div class = "wrapper">
+            <nav class = "nav">
+                  <div class = "sidebar-content sidebar-top">
+                    <h5 style = "text-align: center;">Vertex coloring</h5>
+                    <div class = "dropdown-divider"></div>
+                    <div style = "display: flex; flex-direction: row; justify-content: space-evenly;">
+                      <h6>Color 1:</h6>
+                      <div style  = "background-color: red; width: 20%; border-radius: 6px;">
+                        <input class = "color-picker" type = "color">
+                      </div>
+                      <h6>Color 2:</h6>
+                      <div style  = "background-color: red; width: 20%; border-radius: 6px;">
+                        <input  class = "color-picker" type = "color">
+                      </div>
+                    </div>
+                    <div class = "container" style = "margin-top: 5%;">
+                    <div class = "custom-range" id = "range1">
+                      <button class = "range-slider" id = "b1"></button>
+                      <button class = "range-slider" id = "b2"></button>
+                    </div>
+                    </div>
+                  </div>
+                  
+                  <div class = "sidebar-content" style = "position: relative;">
+                    <div class="dropdown" style="align-self: center;">
+                      <button class="btn dropdown-toggle" type="button" id = "generators-menu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "box-shadow: none !important;">
+                        Generators
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item generator-btn" data-genId = "gen1" href="#" style = "width: 21rem;">Prufer code</a>
+                        <a class="dropdown-item generator-btn" data-genId = "gen2" href="#" style = "width: 21rem;">N-ary tree</a>
+                        <a class="dropdown-item generator-btn" data-genId = "gen3" href="#" style = "width: 21rem;">Erdos-Renyi model</a>
+                      </div>
+                    </div>
+                    <!-- <h5 style = "text-align: center;">Generators</h5> -->
+                    <div id = "gen1" class="input-group p-2 generator">
+                      <div class="input-group-prepend">
+                        <button class="btn startBtn" type="button" style = "box-shadow: none !important; color: white;">Create</button>
+                      </div>
+                      <input type="number" class = "form-control number-input" style ="width: 4rem" placeholder = "N">
+                      <!-- <input type="number" class = "form-control number-input" style="width: 2rem"> -->
+                    </div>
+                    <div id = "gen2" class = "input-group p-2 generator" style = "display: none;">
+                      <div class="input-group-prepend"> 
+                        <button class="btn startBtn" type="button" style = "box-shadow: none !important; color: white;">Create</button>
+                      </div>
+                      <input type="number" class="form-control number-input" style="width: 2rem" placeholder = "Ary">
+                      <input type="number" class="form-control number-input" style="width: 2rem" placeholder = "Height">
+                    </div>
+                    <div id="gen3" class="input-group p-2 generator" style = "display: none;">
+                      <div class="input-group-prepend">
+                        <button class="btn startBtn" type="button" style = "box-shadow: none !important; color: white;">Create</button>
+                      </div>
+                      <input type="number" class="form-control number-input" style="width: 2rem" placeholder = "N">
+                      <input type="number" class="form-control number-input" style="width: 2rem" placeholder = "P 0..1" step = "0.01">
+                    </div>
+                  </div>
+  
+                  <div class = "sidebar-content sidebar-bottom">
+                    <h5 style = "text-align: center;">Forces</h5>
+                    <div class = "dropdown-divider"></div>
+                    <h6 style = "text-align: center;">Max acceleration</h6>
+                    <div class = "container">
+                      <input type="range" class="form-range">
+                    </div>
+                    <div class = "dropdown-divider"></div>
+                    <h6 style = "text-align: center;">Spring force</h6>
+                    <div class = "container">
+                      <input type="range" class="form-range">
+                    </div>
+                    <div class = "dropdown-divider"></div>
+                    <h6 style = "text-align: center;">Repulsive force</h6>
+                    <div class = "container">
+                      <input type="range" class="form-range">
+                    </div>
+                  </div>
+            </nav>
+            <div class = "block1">
+            </div>
+        </div>
+    </div>
+  <script src = "doubleRange.js"></script>
+  <script src = "colorPicker.js"></script>
+  <script src = "generators.js"></script>
+  <script src = "main.js"></script>
+
+</body>
+</html>
