@@ -109,6 +109,10 @@ h1{
     background-color:transparent;
 }
 
+input[type = "number"]::selection{
+    background-color: #3390ff;
+}
+
 .range-slider{
     border-radius: 50%;
     height: 16px;
@@ -203,4 +207,14 @@ h1{
 
 .number-input{
     box-shadow: none !important;
+}
+
+.clearBtn{
+    box-shadow: none !important;
+    background-color: #da1b1b;
+    color: white !important;
+}
+
+.clearBtn:hover{
+    color: white !important;
 }
